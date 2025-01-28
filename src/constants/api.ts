@@ -1,1 +1,1 @@
-export const API_BASE_URL = '/sv';
+export const API_BASE_URL = '/svc';

@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/sv': {
+      '/svc': {
         target: 'http://localhost:8080', // Backend adresi
         changeOrigin: true, // Origin'i backend'e göre değiştir
         secure: false, // HTTPS için güvenlik kontrolünü devre dışı bırak
