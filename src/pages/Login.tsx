@@ -1,29 +1,34 @@
-import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { login } from '../api/authService';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthProvider';
+import { login } from '../api/authService';
 
 const Login: React.FC = () => {
-    const { login: loginUser } = useAuth(); // AuthProvider'dan login fonksiyonunu alın
+    const { isAuthenticated, login: loginUser } = useAuth();
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
-    const navigate = useNavigate();
+
+    // Eğer kullanıcı zaten giriş yapmışsa otomatik olarak /dashboard'a yönlendir
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/dashboard', { replace: true });
+        }
+    }, [isAuthenticated, navigate]);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             const response = await login(username, password);
 
-            // AuthProvider ile token'ları ve login durumunu güncelle
-            loginUser(response.token, response.csrf_token);
+            // Kullanıcı bilgilerini sakla ve yönlendir
+            loginUser(response.token, response.csrf_token, response.user);
 
-            setError(null); // Hata durumunu sıfırla
-
-            // Başarılı giriş sonrası yönlendirme            
-            navigate('/dashboard'); // Kullanıcıyı dashboard sayfasına yönlendir
+            setError(null);
+            navigate('/dashboard');
         } catch (err: any) {
-            setError(err.message); // Hata mesajını göster
+            setError(err.message);
         }
     };
 
