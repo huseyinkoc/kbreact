@@ -5,6 +5,7 @@ import { Checkbox, Password, Button, Input, Text } from 'rizzui';
 import { Form } from '../../ui/form';
 import { loginSchema, LoginSchema } from '../../validators/login.schema';
 import { login } from '../../api/authService'; // Login API isteği için servis dosyası oluşturuldu
+import { SubmitHandler } from 'react-hook-form';
 
 const initialValues: LoginSchema = {
   email: 'admin@admin.com',
@@ -16,17 +17,10 @@ export default function SignInForm() {
   const [reset, setReset] = useState({});
   const navigate = useNavigate(); // Sayfa yönlendirme için React Router kullanımı
 
-  const onSubmit = async (data: LoginSchema) => {
-    try {
-      const response = await login(data.email, data.password);
-      if (response) {
-        navigate('/dashboard'); // Başarılı giriş sonrası yönlendirme
-      } else {
-        console.error('Login failed:', 'xxxxxxx--->');
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-    }
+  const onSubmit: SubmitHandler<LoginSchema> = (data) => {
+    console.log(data);
+
+    // setReset({ email: "", password: "", isRememberMe: false });
   };
 
   return (

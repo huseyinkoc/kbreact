@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider, useAuth } from './context/AuthProvider';
 import Test from './pages/Test';
+import SignIn from './pages/sign-in-1/page';
 
 const HomeRedirect: React.FC = () => {
   const { isAuthenticated } = useAuth();
@@ -18,7 +19,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomeRedirect />} />
           <Route path="/login" element={<Login />} />
-          <Route path='/signin' element={<Test />} />
+          <Route path='/signin' element={<SignIn />} />
           <Route
             path="/dashboard"
             element={
