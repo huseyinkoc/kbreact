@@ -1,29 +1,137 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const plugin = require("tailwindcss");
+const forms = require("@tailwindcss/forms");
+const contentQueries = require("@tailwindcss/container-queries");
+
+module.exports = {
+  darkMode: ["class", '[data-theme="dark"]'],
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/rizzui/dist/**/*.{js,ts,jsx,tsx}" // RizzUI bileşenlerinin Tailwind tarafından algılanması için
   ],
   theme: {
+    screens: {
+      xs: "480px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+      "3xl": "1920px",
+      "4xl": "2560px", // Ultra 4K cihazlar için
+    },
     extend: {
-      fontFamily: {
-        lexend: ["Lexend", "sans-serif"], // Tailwind'in `font-lexend` sınıfını algılamasını sağlar
-        inter: ["Inter", "sans-serif"], // Tailwind'in `font-inter` sınıfını algılamasını sağlar
-      },
-      fontSize: {
-        '4xl': '2.25rem', // Varsayılan
-        '5xl': '3rem',
-      },
       colors: {
-        primary: {
-          DEFAULT: "#1E40AF", // Özel `primary` rengi
-          foreground: "#FFFFFF", // `text-primary-foreground` rengi
+        gray: {
+          0: "rgb(var(--gray-0) / <alpha-value>)",
+          50: "rgb(var(--gray-50) / <alpha-value>)",
+          100: "rgb(var(--gray-100) / <alpha-value>)",
+          200: "rgb(var(--gray-200) / <alpha-value>)",
+          300: "rgb(var(--gray-300) / <alpha-value>)",
+          400: "rgb(var(--gray-400) / <alpha-value>)",
+          500: "rgb(var(--gray-500) / <alpha-value>)",
+          600: "rgb(var(--gray-600) / <alpha-value>)",
+          700: "rgb(var(--gray-700) / <alpha-value>)",
+          800: "rgb(var(--gray-800) / <alpha-value>)",
+          900: "rgb(var(--gray-900) / <alpha-value>)",
+          1000: "rgb(var(--gray-1000) / <alpha-value>)",
         },
-        "blue-lighter": "#E0F2FE", // Özel olarak tanımlanan mavi tonu
-        "red-dark": "#991B1B", // Özel `red-dark` rengi (örn. Tailwind'in `red-800` rengi)
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        "muted-foreground": "rgb(var(--muted-foreground) / <alpha-value>)",
+        primary: {
+          lighter: "rgb(var(--primary-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--primary-default) / <alpha-value>)",
+          dark: "rgb(var(--primary-dark) / <alpha-value>)",
+          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
+        },
+        secondary: {
+          lighter: "rgb(var(--secondary-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--secondary-default) / <alpha-value>)",
+          dark: "rgb(var(--secondary-dark) / <alpha-value>)",
+          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
+        },
+        red: {
+          lighter: "rgb(var(--red-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--red-default) / <alpha-value>)",
+          dark: "rgb(var(--red-dark) / <alpha-value>)",
+        },
+        orange: {
+          lighter: "rgb(var(--orange-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--orange-default) / <alpha-value>)",
+          dark: "rgb(var(--orange-dark) / <alpha-value>)",
+        },
+        blue: {
+          lighter: "rgb(var(--blue-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--blue-default) / <alpha-value>)",
+          dark: "rgb(var(--blue-dark) / <alpha-value>)",
+        },
+        green: {
+          lighter: "rgb(var(--green-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--green-default) / <alpha-value>)",
+          dark: "rgb(var(--green-dark) / <alpha-value>)",
+        },
+      },
+      fontFamily: {
+        inter: ["var(--font-inter)"],
+        lexend: ["var(--font-lexend)"],
+      },
+      animation: {
+        blink: "blink 1.4s infinite both;",
+        "scale-up": "scaleUp 500ms infinite alternate",
+        "spin-slow": "spin 4s linear infinite",
+        popup: "popup 500ms var(--popup-delay, 0ms) linear 1",
+        skeleton: "skeletonWave 1.6s linear 0.5s infinite",
+        "spinner-ease-spin": "spinnerSpin 0.8s ease infinite",
+        "spinner-linear-spin": "spinnerSpin 0.8s linear infinite",
+      },
+      backgroundImage: {
+        skeleton: "linear-gradient(90deg,transparent,#ecebeb,transparent)",
+        "skeleton-dark": "linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent)",
+      },
+      keyframes: {
+        blink: {
+          "0%": { opacity: "0.2" },
+          "20%": { opacity: "1" },
+          "100%": { opacity: "0.2" },
+        },
+        scaleUp: {
+          "0%": { transform: "scale(0)" },
+          "100%": { transform: "scale(1)" },
+        },
+        popup: {
+          "0%": { transform: "scale(0)" },
+          "50%": { transform: "scale(1.3)" },
+          "100%": { transform: "scale(1)" },
+        },
+        skeletonWave: {
+          "0%": { transform: "translateX(-100%)" },
+          "50%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+        spinnerSpin: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+      },
+      content: {
+        underline: 'url("/public/underline.svg")',
+      },
+      boxShadow: {
+        profilePic: "0px 2px 4px -2px rgba(0, 0, 0, 0.10), 0px 4px 6px -1px rgba(0, 0, 0, 0.10)",
+      },
+      gridTemplateColumns: {
+        "18": "repeat(18, minmax(0, 1fr))",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    forms,
+    contentQueries,
+    plugin(({ addVariant }) => {
+      addVariant("not-read-only", "&:not(:read-only)");
+    }),
+  ],
 };

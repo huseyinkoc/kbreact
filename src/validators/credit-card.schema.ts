@@ -1,4 +1,4 @@
-import { messages } from '@/config/messages';
+import { messages } from '../config/messages';
 import { z } from 'zod';
 
 // form zod validation schema

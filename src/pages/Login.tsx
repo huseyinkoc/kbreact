@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthProvider';
-import { login } from '../api/authService';
+import { loginCheck } from '../api/authService';
 
 const Login: React.FC = () => {
     const { isAuthenticated, login: loginUser } = useAuth();
@@ -20,7 +20,7 @@ const Login: React.FC = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await login(username, password);
+            const response = await loginCheck(username, password);
 
             // Kullanıcı bilgilerini sakla ve yönlendir
             loginUser(response.token, response.csrf_token, response.user);

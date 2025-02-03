@@ -211,15 +211,15 @@
   }
 
   h1 {
-    @apply text-3xl dark:text-gray-800 2xl:text-[32px] text-4xl;
+    @apply text-3xl dark:text-gray-800 2xl:text-[32px] 4xl:text-4xl;
   }
 
   h2 {
-    @apply text-2xl dark:text-gray-800 2xl:text-[26px] text-3xl;
+    @apply text-2xl dark:text-gray-800 2xl:text-[26px] 4xl:text-3xl;
   }
 
   h3 {
-    @apply text-xl 2xl:text-[22px] text-2xl;
+    @apply text-xl 2xl:text-[22px] 4xl:text-2xl;
   }
 
   h4 {
@@ -240,6 +240,7 @@
 }
 
 @layer utilities {
+  
   .fill-opacity-10 {
     fill-opacity: 0.1;
   }
@@ -282,6 +283,8 @@
       0px 1px 0 rgba(0, 0, 0, 0.02),
       0px 2px 6px rgba(0, 0, 0, 0.05);
   }
+
+  
 }
 
 /* ................................................... */
@@ -357,7 +360,7 @@ select:-webkit-autofill:focus {
 /* ?React Datepicker Styling */
 /* ................................................... */
 .react-datepicker-popper .react-datepicker {
-  @apply bg-gray-50 font-inter text-gray-600 dark:border-gray-300 dark:bg-gray-100;
+  @apply bg-gray-0 font-inter text-gray-600 dark:border-gray-300 dark:bg-gray-100;
 }
 
 /* month container */
@@ -386,7 +389,7 @@ select:-webkit-autofill:focus {
 
 /* header */
 .react-datepicker .react-datepicker__header {
-  @apply border-b-gray-50 bg-gray-50 font-lexend dark:border-transparent dark:bg-gray-100;
+  @apply border-b-gray-0 bg-gray-0 font-lexend dark:border-transparent dark:bg-gray-100;
 }
 
 /* current month name in header */
@@ -436,13 +439,13 @@ select:-webkit-autofill:focus {
 
 /* keyboard selected */
 .react-datepicker .react-datepicker__day--keyboard-selected {
-  @apply bg-gray-50;
+  @apply bg-gray-0;
 }
 
 /* today */
 .react-datepicker .react-datepicker__day--today {
-  @apply rounded-full border border-gray-300 bg-gray-50 leading-[26px] text-gray-900;
-  @apply hover:border-gray-600 hover:bg-gray-50;
+  @apply rounded-full border border-gray-300 bg-gray-0 leading-[26px] text-gray-900;
+  @apply hover:border-gray-600 hover:bg-gray-0;
 }
 
 /* while selecting */
@@ -472,12 +475,12 @@ select:-webkit-autofill:focus {
 .react-datepicker .react-datepicker__day--range-start,
 .react-datepicker .react-datepicker__day--range-end,
 .react-datepicker .react-datepicker__day--selected {
-  @apply rounded-full border-none bg-gray-900 font-normal leading-7 text-gray-50;
-  @apply hover:bg-gray-900/80 hover:text-gray-50;
+  @apply rounded-full border-none bg-gray-900 font-normal leading-7 text-gray-0;
+  @apply hover:bg-gray-900/80 hover:text-gray-0;
 }
 
 .react-datepicker .react-datepicker__year-text--range-end {
-  @apply border-none bg-gray-900 font-normal text-gray-50 hover:bg-gray-900/80 hover:text-gray-50;
+  @apply border-none bg-gray-900 font-normal text-gray-0 hover:bg-gray-900/80 hover:text-gray-0;
 }
 
 /* time list */
@@ -543,7 +546,7 @@ select:-webkit-autofill:focus {
 .react-datepicker .react-datepicker__month--range-start,
 .react-datepicker .react-datepicker__month--range-end,
 .react-datepicker .react-datepicker__month--selected {
-  @apply bg-gray-900 font-normal text-gray-50;
+  @apply bg-gray-900 font-normal text-gray-0;
 }
 
 /* hover on selected range start and end month */
@@ -553,7 +556,7 @@ select:-webkit-autofill:focus {
   .react-datepicker__month-text.react-datepicker__month--range-start:hover,
 .react-datepicker
   .react-datepicker__month-text.react-datepicker__month--range-end:hover {
-  @apply bg-gray-900/80 text-gray-50;
+  @apply bg-gray-900/80 text-gray-0;
 }
 
 /* year wrapper in year picker */
@@ -567,7 +570,7 @@ select:-webkit-autofill:focus {
 }
 
 .react-datepicker .react-datepicker__year-text--range-end {
-  @apply text-gray-50;
+  @apply text-gray-0;
 }
 
 /* keyboard selected year in year picker */
@@ -581,8 +584,8 @@ select:-webkit-autofill:focus {
   .react-datepicker__year-text.react-datepicker__year-text--selected,
 .react-datepicker
   .react-datepicker__month-text.react-datepicker__month-text--selected {
-  @apply bg-gray-900 text-gray-50;
-  @apply hover:bg-gray-900/80 hover:text-gray-50;
+  @apply bg-gray-900 text-gray-0;
+  @apply hover:bg-gray-900/80 hover:text-gray-0;
 }
 
 /* year and month dropdown arrow */
@@ -607,7 +610,7 @@ select:-webkit-autofill:focus {
 /* month and year dropdown */
 .react-datepicker .react-datepicker__year-dropdown,
 .react-datepicker .react-datepicker__month-dropdown {
-  @apply top-auto w-2/5 border border-gray-100 bg-gray-50 shadow-md;
+  @apply top-auto w-2/5 border border-gray-100 bg-gray-0 shadow-md;
 }
 
 /* year dropdown */
@@ -829,7 +832,7 @@ th.rc-table-cell-fix-right {
 }
 
 td.rc-table-cell-fix-right {
-  @apply bg-gray-50;
+  @apply bg-gray-0;
 }
 
 .rc-table-cell-fix-right-first,
@@ -923,7 +926,7 @@ td.rc-table-cell-fix-right {
 
 /* React Quill */
 .react-quill .ql-toolbar.ql-snow {
-  @apply flex flex-wrap items-center gap-1.5 rounded-t-md border-[1.8px] border-gray-400;
+  @apply flex flex-wrap items-center gap-1.5 rounded-t-md border-[1.8px] border-muted;
 }
 
 .react-quill .ql-container {
@@ -931,7 +934,7 @@ td.rc-table-cell-fix-right {
 }
 
 .react-quill .ql-container.ql-snow {
-  @apply rounded-b-md border-[1.8px] border-gray-400;
+  @apply rounded-b-md border-[1.8px] border-muted;
 }
 
 .react-quill .ql-editor {
@@ -1172,11 +1175,11 @@ div[style='z-index: 1000001;'],
 /* React Big Calendar Styles */
 /* ................................................... */
 .rbc-month-view {
-  @apply border-gray-400;
+  @apply border-muted;
 }
 
 .rbc-header {
-  @apply h-12 border-gray-400 py-3.5 text-[13px] font-semibold uppercase text-gray-400 lg:px-7;
+  @apply h-12 border-muted py-3.5 text-[13px] font-semibold uppercase text-gray-400 lg:px-7;
 }
 
 :is(
@@ -1185,7 +1188,7 @@ div[style='z-index: 1000001;'],
   .rbc-month-row + .rbc-month-row,
   .rbc-timeslot-group
 ) {
-  @apply border-gray-400;
+  @apply border-muted;
 }
 
 .rbc-day-bg {
@@ -1208,7 +1211,7 @@ div[style='z-index: 1000001;'],
 .rbc-time-view,
 .rbc-time-content,
 .rbc-time-header-content {
-  @apply border-t border-gray-400;
+  @apply border-t border-muted;
 }
 
 .rbc-today {
@@ -1217,7 +1220,7 @@ div[style='z-index: 1000001;'],
 
 .rbc-day-slot .rbc-time-slot,
 .rbc-timeslot-group {
-  @apply border-gray-400 dark:!border-gray-400;
+  @apply border-muted dark:!border-gray-400;
 }
 
 .rbc-day-slot .rbc-time-slot {
@@ -1237,10 +1240,10 @@ div[style='z-index: 1000001;'],
 }
 
 .rbc-time-content > * + * > * {
-  @apply border-l border-gray-400;
+  @apply border-l border-muted;
 }
 .rbc-timeslot-group {
-  @apply border-b border-gray-400;
+  @apply border-b border-muted;
 }
 
 .rbc-time-header.rbc-overflowing {
@@ -1273,18 +1276,18 @@ div[style='z-index: 1000001;'],
 }
 
 .rbc-day-slot .rbc-time-slot + .rbc-time-slot {
-  @apply border-t border-gray-400;
+  @apply border-t border-muted;
 }
 
 .rbc-timeslot-group {
-  @apply min-h-[80px] border-gray-400;
+  @apply min-h-[80px] border-muted;
 }
 .rbc-toolbar {
-  @apply mb-0 rounded-t-md border border-b-0 border-gray-400 px-4 py-6;
+  @apply mb-0 rounded-t-md border border-b-0 border-muted px-4 py-6;
 }
 
 .rbc-btn-group {
-  @apply rounded-md border border-gray-400;
+  @apply rounded-md border border-muted;
 }
 
 .rbc-btn-group button {
@@ -1307,7 +1310,7 @@ div[style='z-index: 1000001;'],
 .rbc-agenda-view table.rbc-agenda-table,
 .rbc-agenda-view table.rbc-agenda-table thead > tr > th,
 .rbc-agenda-view table.rbc-agenda-table tbody > tr > td + td {
-  @apply border-gray-400;
+  @apply border-muted;
 }
 
 .rbc-agenda-view table.rbc-agenda-table {
@@ -1401,7 +1404,7 @@ div[style='z-index: 1000001;'],
   @apply !bg-[#2B7F75];
 }
 .react-calendar__tile--now {
-  @apply !text-gray-50;
+  @apply !text-gray-0;
 }
 .react-calendar__month-view__days__day--weekend {
   @apply !text-red-dark;

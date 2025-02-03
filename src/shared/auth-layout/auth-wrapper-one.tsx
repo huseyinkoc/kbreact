@@ -5,10 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import toast from 'react-hot-toast';
 import { Button, Title, Text } from 'rizzui';
 import OrSeparation from './or-separation';
-
-// Logo dosyalarınızı import edin
-import logoImg from '../../../public/logo-primary.svg';
-import logoImgText from '../../../public/logo-primary-text.svg';
+import { useSiteConfig } from '../../context/SiteConfigContext';
 
 export default function AuthWrapperOne({
   children,
@@ -18,6 +15,7 @@ export default function AuthWrapperOne({
   description,
   pageImage,
   isSocialLoginActive = false,
+  siteLogo,
 }: {
   children: React.ReactNode;
   title: React.ReactNode;
@@ -26,7 +24,13 @@ export default function AuthWrapperOne({
   bannerDescription?: string;
   pageImage?: React.ReactNode;
   isSocialLoginActive?: boolean;
+  siteLogo?: string
 }) {
+
+  const siteConfig = useSiteConfig();
+
+  siteLogo = siteConfig?.logo_url;
+
   function handleSignIn() {
     toast.error(
       <Text>
@@ -64,15 +68,16 @@ export default function AuthWrapperOne({
             <div className="mb-7 px-6 pt-3 text-center md:pt-0 lg:px-0 lg:text-start xl:mb-8 2xl:mb-10">
               {/* Logo */}
               <Link to="/" className="mb-6 inline-flex max-w-[168px] xl:mb-8">
-                <LazyLoadImage src={logoImg} alt="Isomorphic"
+                <LazyLoadImage src={siteLogo} alt="Isomorphic"
                 //effect="blur" 
                 />
-                <LazyLoadImage
-                  src={logoImgText}
+
+                {/* <LazyLoadImage
+                  src={siteLogo}
                   alt="Isomorphic"
                   //effect="blur"
                   className="ps-2.5 dark:invert"
-                />
+                /> */}
               </Link>
 
               <Title
@@ -99,7 +104,7 @@ export default function AuthWrapperOne({
                     className="h-11 w-full"
                   >
                     <PiAppleLogoFill className="me-2 h-4 w-4 shrink-0" />
-                    <span className="truncate">Signin With Apple</span>
+                    <span className="truncate">Apple İle Giriş Yapın</span>
                   </Button>
                   <Button
                     variant="outline"
@@ -110,10 +115,10 @@ export default function AuthWrapperOne({
                     className="h-11 w-full"
                   >
                     <FcGoogle className="me-2 h-4 w-4 shrink-0" />
-                    <span className="truncate">Signin With Google</span>
+                    <span className="truncate">Google İle Giriş Yapın</span>
                   </Button>
                 </div>
-                <OrSeparation title="OR" className="mb-5 2xl:mb-7" isCenter />
+                <OrSeparation title="YA DA" className="mb-5 2xl:mb-7" isCenter />
               </>
             )}
 

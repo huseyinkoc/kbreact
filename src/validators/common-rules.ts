@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { messages } from '@/config/messages';
+import { messages } from '../config/messages';
 
 export const fileSchema = z.object({
   name: z.string(),

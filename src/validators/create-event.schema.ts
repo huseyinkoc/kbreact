@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { messages } from '@/config/messages';
+import { messages } from '../config/messages';
 
 export const eventFormSchema = z.object({
   id: z.string().optional(),

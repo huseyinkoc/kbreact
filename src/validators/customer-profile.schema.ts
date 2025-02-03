@@ -3,7 +3,7 @@ import {
   validateEmail,
   validatePassword,
 } from './common-rules';
-import { messages } from '@/config/messages';
+import { messages } from '../config/messages';
 
 // form zod validation schema
 export const customerProfileSchema = z.object({
