@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { messages } from '@/config/messages';
+import { messages } from '../config/messages';
 
 const addressSchema = z.object({
   customerName: z.string().min(1, { message: messages.customerNameIsRequired }),

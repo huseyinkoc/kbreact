@@ -1,8 +1,4 @@
-import { Inter, Lexend_Deca } from 'next/font/google';
+const inter = require("@fontsource/inter");
+const lexendDeca = require("@fontsource/lexend-deca");
 
-export const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-
-export const lexendDeca = Lexend_Deca({
-  subsets: ['latin'],
-  variable: '--font-lexend',
-});
+export { inter, lexendDeca };

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { messages } from '@/config/messages';
+import { messages } from '../config/messages';
 
 export const invoiceFormSchema = z.object({
   fromName: z.string().min(1, { message: messages.nameIsRequired }),

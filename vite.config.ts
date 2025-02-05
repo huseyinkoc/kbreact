@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
@@ -10,6 +11,11 @@ export default defineConfig({
         changeOrigin: true, // Origin'i backend'e göre değiştir
         secure: false, // HTTPS için güvenlik kontrolünü devre dışı bırak
       },
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'), // ✅ "@" alias'ı tanımlandı
     },
   },
 });

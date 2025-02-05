@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { messages } from '@/config/messages';
+import { messages } from '../config/messages';
 
 // form zod validation schema
 export const productDetailsSchema = z.object({
